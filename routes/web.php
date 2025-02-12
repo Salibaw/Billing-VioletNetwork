@@ -47,7 +47,14 @@ Route::middleware(['auth', 'check.user.status'])->group(function () {
     Route::get('/dashboard', function () {
         return view('app');
     })->name('dashboard');
-
+    Route::get('/pelanggan', function () {
+        return view('pelanggan.pelanggan'); // Pastikan Anda memiliki view 'pelanggan.blade.php'
+    })->name('pelanggan.pelanggan');
+    
+    // Route untuk halaman Tagihan
+    Route::get('/tagihan', function () {
+        return view('tagihan.tagihan'); // Pastikan Anda memiliki view 'tagihan.blade.php'
+    })->name('tagihan.tagihan');
 
     Route::get('/profile', [AuthController::class, 'showProfile'])->name('profile');
     Route::post('/profile', [AuthController::class, 'updateProfile'])->name('profile.update');

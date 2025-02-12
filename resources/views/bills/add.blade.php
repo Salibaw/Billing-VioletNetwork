@@ -7,7 +7,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addBillModalLabel">Add New Bill</h5>
+                <h5 class="modal-title" id="addBillModalLabel">Tambah Pengguna Baru</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -15,11 +15,6 @@
                     <!-- Product Form for entering bill of product-->
                     <form id="addBillForm" class="row g-3">
                         @csrf
-                        <div class="col-md-6">
-                            <label for="billNumber" class="form-label">Bill Number</label>
-                            <input type="number" class="form-control" id="billNumber" name="billNumber">
-                            <div id="billNumberError" class="invalid-feedback"></div>
-                        </div>
                         <div class="col-md-6 ms-auto">
                             <label for="customerPhone" class="form-label">Customer Phone</label>
                             <input type="number" class="form-control" id="customerPhone" name="customerPhone">
@@ -80,18 +75,23 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Function to calculate total amount
+        // Function to calculate total amount and format as currency
         function calculateTotal() {
             var mrp = parseFloat($('#productMrp').val());
             var quantity = parseInt($('#productQuantity').val());
-            var total = isNaN(mrp) || isNaN(quantity) ? 0 : (mrp * quantity).toFixed(2);
-            $('#total').val(total);
+            var total = isNaN(mrp) || isNaN(quantity) ? 0 : mrp * quantity;
+
+            // Format ke mata uang Rupiah
+            var formattedTotal = total.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+
+            // Menampilkan hasil dalam input atau elemen lain
+            $('#total').val(formattedTotal);
         }
 
-        // Event listener for MRP and quantity input fields
+        // Event listener untuk input perubahan MRP dan jumlah
         $('#productMrp, #productQuantity').on('input', calculateTotal);
 
-        // Event listener for product name change
+        // Event listener untuk perubahan nama produk
         $('#productName').change(function() {
             var product_id = $(this).val();
             $.ajax({
@@ -109,24 +109,24 @@
             });
         });
 
-        // Event listener for save button
+        // Event listener untuk tombol simpan
         $('#saveBillBtn').click(function() {
-            // Reset previous error messages
+            // Reset pesan error sebelumnya
             $('.invalid-feedback').html('').removeClass('is-invalid');
 
-            // Submit the form using AJAX
+            // Kirim form dengan AJAX
             $.ajax({
                 url: '{{ route('storeBill') }}',
                 method: 'POST',
                 data: $('#addBillForm').serialize(),
                 success: function(response) {
-                    // Handle success
+                    // Handle sukses
                     console.log(response);
                     $('#addBillModal').modal('hide');
-                    location.reload(); // Reload the page or update the bills table dynamically
+                    location.reload(); // Reload halaman atau perbarui data secara dinamis
                 },
                 error: function(xhr) {
-                    // Handle errors
+                    // Handle error validasi
                     if (xhr.status === 422) {
                         var errors = xhr.responseJSON.errors;
                         $.each(errors, function(key, value) {
