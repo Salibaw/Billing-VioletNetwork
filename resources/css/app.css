@@ -1,0 +1,52 @@
+/* styles.css */
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Light gray background */
+}
+
+/* Navigation styles */
+nav {
+    background-color: #6c757d; /* Gray color for navigation bar */
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 200px; /* Adjust the width as needed */
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-bottom: 20px; /* Adjust margin for spacing */
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px;
+    color: #fff; /* White text color for navigation links */
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #495057; /* Darker gray on hover */
+}
+
+/* Content styles */
+.content {
+    margin-left: 220px; /* Adjust margin to accommodate the navigation bar */
+    padding: 20px;
+    background-color: #fff; /* White background for content area */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
