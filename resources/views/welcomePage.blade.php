@@ -42,7 +42,7 @@
                 </div> --}}
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p>&copy; 2024 ROYSTEK . All rights reserved.</p>
+                        <p>&copy; 2025 Violet Network . All rights reserved.</p>
                     </div>
                 </div>
             </div>
