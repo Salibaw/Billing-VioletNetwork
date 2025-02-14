@@ -15,21 +15,21 @@
 </li><!-- End Dashboard Nav -->
 
 <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('pelanggan.pelanggan') ? 'active pelanggan' : '' }}" href="{{ route('pelanggan.pelanggan') }}">
+            <a class="nav-link {{ request()->routeIs('pelanggan') ? 'active pelanggan' : '' }}" href="{{ route('pelanggan') }}">
                 <i class="bi bi-person"></i>
                 <span>Pelanggan</span>
             </a>
         </li><!-- End Pelanggan Nav -->
 
         <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('tagihan.tagihan') ? 'active tagihan' : '' }}" href="{{ route('tagihan.tagihan') }}">
+            <a class="nav-link {{ request()->routeIs('tagihan') ? 'active tagihan' : '' }}" href="{{ route('tagihan') }}">
                 <i class="bi bi-file-earmark-text"></i>
                 <span>Tagihan</span>
             </a>
         </li><!-- End Tagihan Nav -->
 
         <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('maps') ? 'active maps' : '' }}" href="{{ route('dashboard') }}">
+            <a class="nav-link {{ request()->routeIs('maps') ? 'active maps' : '' }}" href="{{ route('maps') }}">
                 <i class="bi bi-map"></i>
                 <span>Maps</span>
             </a>
